@@ -3,6 +3,7 @@
 # sources: 
 #  * http://www.opinionatedprogrammer.com/2011/01/colorful-bash-prompt-reflecting-git-status/
 #  * http://en.wikipedia.org/wiki/Tput
+source "$HOME/.configuration"
 
 color_enabled() {
     test -x /usr/bin/tput
@@ -67,9 +68,19 @@ function _current_dir(){
      echo -n '\[$RESET_FORMAT\]\w\['$color'\]\[$RESET_FORMAT\]'
 }
 
+function _uncommited_changes_in_dotfiles() {
+    local color="$RED"
+    local SRC_DIR="$(readlink "$BASHRC_FILE")"
+    local DOTFILES_DIR="$(dirname "$SRC_DIR")"
+    local msg="☠ ☠ ☠ local changes in $DOTFILES_DIR, please commit ☠ ☠ ☠"
+    cd "$DOTFILES_DIR"
+    if ! git diff-index --quiet HEAD; then
+        echo -n '\[$RESET_FORMAT\]\n\['$color'\]'"$msg"'\[$RESET_FORMAT\]\n'
+    fi
+}
+
 function _prompt_command() {
-    PS1="`_virtualenv``_base_prompt``_git_prompt` \$ "
+    PS1="`_uncommited_changes_in_dotfiles``_virtualenv``_base_prompt``_git_prompt` \$ "
 }
 
 PROMPT_COMMAND=_prompt_command
-
