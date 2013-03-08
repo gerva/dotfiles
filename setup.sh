@@ -21,6 +21,7 @@ create_link _configuration
 create_link _bashrc
 create_link _gitconfig
 create_link _alias
+create_link _prompt
 
 
 echo "* creating virtualenv"
