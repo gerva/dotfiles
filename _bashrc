@@ -10,15 +10,6 @@ if [ -e "$ALIAS_FILE" ]; then
     source "$ALIAS_FILE"
 fi
 
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
-
 # virtualenv setup
 export PATH=$PATH:$HOME/bin
 export WORKON_HOME="$WORKON_HOME"
@@ -27,7 +18,6 @@ export VIRTUALENVWRAPPER_PYTHON=$VIRTUALENV_HOME/bin/python
 if [ -e "$VIRTUALENV_HOME/bin/virtualenvwrapper.sh" ]; then
     source "$VIRTUALENV_HOME/bin/virtualenvwrapper.sh"
 fi
-
 
 # ssh autocompletion (source)
 # http://serverfault.com/questions/170361/how-to-edit-command-completion-for-ssh-on-bash
