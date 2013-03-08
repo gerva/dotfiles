@@ -3,11 +3,11 @@
 set -e
 
 cd "$(dirname $0)"
-source configuration
+source _configuration
 
 function create_link {
     local SRC="${PWD}/$1"
-    local DST="$2"
+    local DST="${HOME}/${1/_/.}"
 
     if [ -e "${DST}" ] && [ ! -L "${DST}" ]; then
         mv $DST $DST.df.bak
@@ -18,8 +18,9 @@ function create_link {
 
 echo "* creating symlinks"
 create_link configuration "$HOME/.configuration"
-create_link _bashrc "$HOME/.bashrc"
-create_link _gitconfig "$HOME/.gitconfig"
+create_link _bashrc
+create_link _gitconfig
+create_link _alias
 
 
 echo "* creating virtualenv"
