@@ -40,3 +40,4 @@ complete -o default -W "${SSH_COMPLETE[*]}" ssh
 if [ -e "$PROMPT_CONF" ]; then
     source "$PROMPT_CONF"
 fi
+
