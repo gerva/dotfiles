@@ -17,7 +17,7 @@ function create_link {
 }
 
 echo "* creating symlinks"
-create_link configuration "$HOME/.configuration"
+create_link _configuration
 create_link _bashrc
 create_link _gitconfig
 create_link _alias
