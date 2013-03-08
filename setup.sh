@@ -19,6 +19,7 @@ function create_link {
 echo "* creating symlinks"
 create_link configuration "$HOME/.configuration"
 create_link _bashrc "$HOME/.bashrc"
+create_link _gitconfig "$HOME/.gitconfig"
 
 
 echo "* creating virtualenv"
