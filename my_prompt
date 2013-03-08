@@ -1,0 +1,75 @@
+#
+# my bash prompt:
+# sources: 
+#  * http://www.opinionatedprogrammer.com/2011/01/colorful-bash-prompt-reflecting-git-status/
+#  * http://en.wikipedia.org/wiki/Tput
+
+color_enabled() {
+    test -x /usr/bin/tput
+}
+
+# git prompt colors:
+BLACK=$(color_enabled && tput setaf 0)
+RED=$(color_enabled && tput setaf 1)
+GREEN=$(color_enabled && tput setaf 2)
+YELLOW=$(color_enabled && tput setaf 3)
+BLUE=$(color_enabled && tput setaf 4)
+PURPLE=$(color_enabled && tput setaf 5)
+CYAN=$(color_enabled && tput setaf 6)
+WHITE=$(color_enabled && tput setaf 7)
+BOLD_FORMAT=$(color_enabled && tput bold)
+ERROR_FORMAT=$(color_enabled && tput setaf 1)
+WARNING_FORMAT=$(color_enabled && tput setaf 3)
+INFO_FORMAT=$(color_enabled && tput setaf 4)
+RESET_FORMAT=$(color_enabled && tput sgr0)
+
+function _git_prompt() {
+    local git_status="`git status -unormal 2>&1`"
+    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
+            local color=$WHITE
+        elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+            local color=$RED
+        else
+            local color=$YELLOW
+        fi
+        if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
+            branch=${BASH_REMATCH[1]}
+            test "$branch" != master || branch=' '
+        else
+            # Detached HEAD.  (branch=HEAD is a faster alternative.)
+            branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null ||
+                echo HEAD`)"
+        fi
+        #echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
+        echo -n '\[$RESET_FORMAT\]\['$color'\]'\("$branch"\)'\[$RESET_FORMAT\]'
+    fi
+}
+
+function _virtualenv() {
+    local env_name=''
+    local color=$YELLOW
+    if [ ! -z "$VIRTUAL_ENV" ]
+    then
+        # we are now in a python virtualenv
+        # let's get the virtualenv name
+        env_name='('"$(echo "$VIRTUAL_ENV" | sed 's!^.*/!!')) "
+    fi
+    echo -n '\[$RESET_FORMAT\]\['$color'\]'"$env_name"'\[$RESET_FORMAT\]'
+}
+
+function _base_prompt(){
+     echo -n '\[$RESET_FORMAT\]\w\n\[$GREEN\]\u\[$RESET_FORMAT\]||\[$BLUE\]\h\[$RESET_FORMAT\] '
+}
+
+function _current_dir(){
+     local color=$WHITE
+     echo -n '\[$RESET_FORMAT\]\w\['$color'\]\[$RESET_FORMAT\]'
+}
+
+function _prompt_command() {
+    PS1="`_virtualenv``_base_prompt``_git_prompt` \$ "
+}
+
+PROMPT_COMMAND=_prompt_command
+

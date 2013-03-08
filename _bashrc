@@ -1,0 +1,42 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+
+if [ -e "$HOME/.configuration" ]; then
+    source "$HOME/.configuration"
+fi
+
+if [ -e "$HOME/.alias" ]; then
+    source "$HOME/.alias"
+fi
+
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+
+export PATH=$PATH:$HOME/bin
+export WORKON_HOME="$WORKON_HOME"
+export PATH=$PATH:$VIRTUALENV_HOME/bin
+export VIRTUALENVWRAPPER_PYTHON=$VIRTUALENV_HOME/bin/python
+if [ -e "$VIRTUALENV_HOME/bin/virtualenvwrapper.sh" ]; then
+    source "$VIRTUALENV_HOME/bin/virtualenvwrapper.sh"
+fi
+
+
+# ssh autocompletion (source)
+# http://serverfault.com/questions/170361/how-to-edit-command-completion-for-ssh-on-bash
+SSH_COMPLETE=( $(cut -f1 -d' ' ~/.ssh/known_hosts |\
+                 tr ',' '\n' |\
+                 sort -u |\
+                 grep -e '[:alpha:]') )
+complete -o default -W "${SSH_COMPLETE[*]}" ssh
+
+
+if [ -e "$PROMPT_CONF" ]; then
+    source "$PROMPT_CONF"
+fi

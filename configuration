@@ -1,0 +1,6 @@
+# virtualenv confguration
+VIRTUALENV_VERSION='1.9.1'
+VIRTUALENV_HOME="$HOME/venv"
+WORKON_HOME="$HOME/.virtualenvs"
+VIRUTALENVWRAPPER_PYTHON="$HOME/venv/bin/python"
+PROMPT_CONF="$HOME/.my_prompt"
