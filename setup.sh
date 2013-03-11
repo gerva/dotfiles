@@ -18,7 +18,7 @@ function create_link {
 
 echo "* creating symlinks"
 create_link _configuration
-create_link _autocomplete
+create_link _autocomplete.bash
 create_link _git-completion.bash
 create_link _bashrc
 create_link _gitconfig
