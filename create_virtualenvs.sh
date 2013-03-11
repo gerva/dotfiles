@@ -2,7 +2,12 @@
 # installs virtualenv
 set -e
 cd "$(dirname $0)"
-source configuration
+if [ -e "$HOME/.configuration" ]; then
+    source "$HOME/.configuration"
+else
+    echo "$HOME/.configuration does not exit"
+    exit 1
+fi
 if [ -e "$VIRTUALENV_HOME" ]
 then
     mv "$VIRTUALENV_HOME" "$VIRTUALENV_HOME-$(date +%s).backup"
