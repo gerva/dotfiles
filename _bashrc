@@ -28,6 +28,12 @@ SSH_COMPLETE=( $(cut -f1 -d' ' ~/.ssh/known_hosts |\
 complete -o default -W "${SSH_COMPLETE[*]}" ssh
 
 
+# git completion bash
+if [ -e "$GIT_COMPLETION_BASH" ]; then
+    source "$GIT_COMPLETION_BASH"
+fi
+
+# prompt
 if [ -e "$PROMPT_FILE" ]; then
     source "$PROMPT_FILE"
 fi
