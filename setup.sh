@@ -18,8 +18,8 @@ function create_link {
 
 echo "* creating symlinks"
 create_link _configuration
-create link _autocomplete
-create link _git-completion.bash
+create_link _autocomplete
+create_link _git-completion.bash
 create_link _bashrc
 create_link _gitconfig
 create_link _alias
