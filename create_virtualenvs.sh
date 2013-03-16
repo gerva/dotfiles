@@ -16,7 +16,7 @@ mkdir -p "$VIRTUALENV_HOME"
 TEMP_DIR="$(mktemp -d -t XXXXXXXXXX)"
 cd "$TEMP_DIR"
 echo "* downloading virtualenv (v $VIRTUALENV_VERSION)"
-wget -q -O virtualenv.tar.gz http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$VIRTUALENV_VERSION.tar.gz
+curl --silent --output virtualenv.tar.gz http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$VIRTUALENV_VERSION.tar.gz
 echo "* unpacking virtualenv"
 tar xzf virtualenv.tar.gz
 echo "* installing virtualenv"
