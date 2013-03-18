@@ -24,10 +24,36 @@ create_link _bashrc
 create_link _gitconfig
 create_link _alias
 create_link _prompt
+create_link _tmux.conf
+create_link _tmux-powerlinerc
 
+function brewInstall() {
+    name="$1"
+    which "$name" > /dev/null 2>&1
+    if [ "$?" != '0' ]
+    then
+        echo "* installing $name"
+        brew install "$name" >/dev/null 2>&1
+    fi
+}
 
-echo "* creating virtualenv"
-setup/create_virtualenvs.sh
-echo "* installing libevent"
-setup/install_libevent.sh
+which virtualenv > /dev/null
+if [ "$?" != "0" ]
+then
+    echo "* creating virtualenv"
+    setup/create_virtualenvs.sh
+fi
 
+which brew > /dev/null
+if [ "$?" != "0" ]
+then
+    echo "* installing brew"
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" > /dev/null 2>&1
+fi
+brewInstall wget
+brewInstall tmux
+
+# stuff from github
+echo "* installing tmux-powerline"
+setup/install_tmux_powerline.sh
+exit 0

@@ -19,8 +19,8 @@ tar xzf "libevent-$LIBEVENT_VERSION-stable.tar.gz"
 echo "* installing libevent"
 cd "libevent-$LIBEVENT_VERSION-stable"
 echo "* configuring libevent"
-./configure --prefix=/opt > /dev/null 2>&1
-echo "* make libevent" 
+./configure CFLAGS="-I$LIBEVENT_DIR/include" LDFLAGS="-L$LIBEVENT_DIR/lib"
+echo "* make libevent"
 make > /dev/null 2>&1
 echo "* make install libevent"
 make install > /dev/null 2>&1

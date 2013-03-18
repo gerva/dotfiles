@@ -8,4 +8,5 @@ ALIAS_FILE="$HOME/.alias"
 BASHRC_FILE="$HOME/.bashrc"
 GIT_COMPLETION_BASH="$HOME/.git-completion.bash"
 AUTOCOMPLETION_FILE="$HOME/.autocomplete.bash"
-LIBEVENT_VERSION='2.0.21'
+BASE_GIR_DIRS="$HOME/work/git"
+POWERLINE_DIR="$BASE_GIR_DIRS/tmux-powerline"
