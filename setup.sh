@@ -27,5 +27,7 @@ create_link _prompt
 
 
 echo "* creating virtualenv"
-./create_virtualenvs.sh
+setup/create_virtualenvs.sh
+echo "* installing libevent"
+setup/insatall_libevent.sh
 
