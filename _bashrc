@@ -31,4 +31,5 @@ if [ -e "$PROMPT_FILE" ]; then
     source "$PROMPT_FILE"
 fi
 
+export POWERLINE_DIR="$POWERLINE_DIR"
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
