@@ -1,0 +1,7 @@
+[diff]
+git=True
+showfunc=True
+
+[alias]
+diff = diff -p -U 8
+
