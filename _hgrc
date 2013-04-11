@@ -1,7 +1,16 @@
 [diff]
 git=True
 showfunc=True
+ignoreblanklines=True
 
-[alias]
-diff = diff -p -U 8
+[format]
+dotencode=False
 
+[ui]
+username = Massimo Gervasini <mgervasini@mozilla.com>
+
+[extensions]
+share=
+rebase=
+mq=
+purge=
