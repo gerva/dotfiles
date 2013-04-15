@@ -15,6 +15,7 @@
     out = outgoing
     du = diff -U8 --patch-with-stat --binary --no-renames @{u}...
     in = log ..@{u}
+    dn = diff --name-only
 
 [color]
     ui = auto
