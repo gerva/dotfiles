@@ -1,7 +1,7 @@
 [diff]
 git=True
 showfunc=True
-ignoreblanklines=True
+!ignoreblanklines=True
 
 [format]
 dotencode=False
