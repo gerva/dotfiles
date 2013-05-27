@@ -39,7 +39,7 @@ then
     export PATH=$PATH
 fi
 
-#export PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 export POWERLINE_DIR="$POWERLINE_DIR"
 export TMUX_POWERLINE_DIR_LIB="$POWERLINE_DIR/lib"
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
