@@ -39,6 +39,11 @@ then
     export PATH=$PATH
 fi
 
+if [ -e "/usr/local/Cellar/vim/7.4/bin" ]
+then
+    PATH=/usr/local/Cellar/vim/7.4/bin:$PATH
+fi
+
 export PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 export POWERLINE_DIR="$POWERLINE_DIR"
 export TMUX_POWERLINE_DIR_LIB="$POWERLINE_DIR/lib"
