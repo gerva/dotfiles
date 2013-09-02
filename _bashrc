@@ -41,6 +41,7 @@ fi
 
 if [ -e "/usr/local/Cellar/vim/7.4/bin" ]
 then
+    export EDITOR=/usr/local/Cellar/vim/7.4/bin/vim
     PATH=/usr/local/Cellar/vim/7.4/bin:$PATH
 fi
 
