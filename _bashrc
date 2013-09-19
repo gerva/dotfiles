@@ -39,6 +39,11 @@ then
     export PATH=$PATH
 fi
 
+if [ -e "/usr/local/Cellar/python/2.7.5/bin" ]
+then 
+    export PATH="/usr/local/Cellar/python/2.7.5/bin:$PATH"
+fi
+
 if [ -e "/usr/local/Cellar/vim/7.4/bin" ]
 then
     export EDITOR=/usr/local/Cellar/vim/7.4/bin/vim
