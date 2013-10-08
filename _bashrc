@@ -12,6 +12,7 @@ fi
 
 # virtualenv setup
 export PATH=$PATH:$HOME/bin
+export PATH="/usr/local/sbin:/usr/bin:$PATH"
 export WORKON_HOME="$WORKON_HOME"
 export PATH=$PATH:$VIRTUALENV_HOME/bin
 export VIRTUALENVWRAPPER_PYTHON="$VIRTUALENV_HOME/bin/python"
