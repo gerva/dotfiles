@@ -24,6 +24,7 @@ create_link _bashrc
 create_link _gitconfig
 create_link _alias
 create_link _prompt
+create_link _profile
 create_link _tmux.conf
 create_link _tmux-powerlinerc
 create_link _hgrc
