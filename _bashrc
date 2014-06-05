@@ -41,7 +41,7 @@ then
 fi
 
 if [ -e "/usr/local/Cellar/python/2.7.5/bin" ]
-then 
+then
     #export PATH="/usr/local/Cellar/python/2.7.5/bin:$PATH"
     echo
 fi
