@@ -8,6 +8,7 @@ dotencode=False
 
 [ui]
 username = Massimo Gervasini <mgervasini@mozilla.com>
+ignore = ~/.hgignore
 
 [extensions]
 share=

@@ -28,6 +28,7 @@ create_link _profile
 create_link _tmux.conf
 create_link _tmux-powerlinerc
 create_link _hgrc
+create_link _hgignore
 
 function brewInstall() {
     name="$1"
