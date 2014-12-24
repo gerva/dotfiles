@@ -1,10 +1,14 @@
 [diff]
 git=True
 showfunc=True
+unified = 8
 !ignoreblanklines=True
 
 [format]
 dotencode=False
+
+[defaults]
+qnew = -Ue
 
 [ui]
 username = Massimo Gervasini <mgervasini@mozilla.com>
